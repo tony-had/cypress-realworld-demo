@@ -1,8 +1,15 @@
-# ![Angular 1.5+ ES6 & Component API Example App](project-logo.png)
+# Cypress RealWorld demo
 
-> Example Angular 1.5+ (ES6 + Components) codebase that adheres to the [RealWorld](https://github.com/gothinkster/realworld-example-apps) spec and API.
+Fork of [RealWorld example app](https://github.com/gothinkster/angularjs-realworld-example-app) with added Cypress end-to-end tests.
 
-View the **[demo application](https://angularjs.realworld.io)** or **[learn how to build the application from scratch](https://thinkster.io/angularjs-es6-tutorial)**!
+The tests can be found in `cypress/integration`:
+- `article.spec.js` - creating a new blog article
+- `comment.spec.js` - posting/deleting a comment on an article
+- `login.spec.js` - logging in via the UI
+- `settings.spec.js` - updating user profile
+- `signup.spec.js` - registering a new profile
+
+Several helper functions have been created for frequently used funcitonality, such as signing up, logging in, logging out, updating the account and posting an article. Those can be found in `cypress/support/commands.js`.
 
 # Getting started
 
@@ -12,14 +19,16 @@ View the **[demo application](https://angularjs.realworld.io)** or **[learn how 
 
 Make sure you have gulp installed globally (`npm install -g gulp`)
 
-### Making requests to the backend API
+# Running the tests
 
-For convenience, we have a live API server running at https://conduit.productionready.io/api for the application to make requests against. You can view [the API spec here](https://github.com/GoThinkster/productionready/blob/master/api) which contains all routes & responses for the server.
+1. (`gulp` to start serving the app)
+2. `npx cypress open`
+3. Run all specs
 
-The source code for the backend server (available for Node, Rails and Django) can be found in the [main RealWorld repo](https://github.com/gothinkster/realworld).
+# TODO
 
-If you want to change the API URL to a local server, simply edit `src/js/config/app.constants.js` and change `api` to the local server's URL (i.e. `localhost:3000/api`)
-
-<br />
-
-[![Brought to you by Thinkster](https://raw.githubusercontent.com/gothinkster/realworld/master/media/end.png)](https://thinkster.io)
+- [ ] implement a test API with database
+- [ ] write integration tests for the API
+- [ ] turn all `beforeEach` set-up functions into API calls
+- [ ] add `data-cy` attributes to elements under test to make tests more robust
+- [ ] measure code coverage
